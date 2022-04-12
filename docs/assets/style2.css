@@ -1,0 +1,877 @@
+/*Обнуление*/
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+
+
+
+
+html, body{
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1;
+    font-size: 14px;
+    font-weight: 500;
+    color: #252B42;
+    background-color: #FAFAFA;
+}
+
+.wrapper{
+    min-height: 100%;
+    overflow: hidden; /*Этот контейнер со свойством overflow hidden нужен для того, чтобы если вдруг в процессе работы у вложенных элементов появятся отступы, выходящие за пределы враппера и увеличивающие ширину и высоту всей страницы....чтобы эти отступы не отображались, а поведение враппера и контейнера мы будем точно контролировать */
+    display: flex;
+    flex-direction: column;
+}
+._container{
+    max-width: 1046px;
+    margin: 0px auto;
+    padding: 0px 15px; /*Чтобы не было прилипания при уменьшении ширины экрана*/
+    box-sizing: content-box;
+}
+
+._ibg{
+    position: relative;
+}
+
+._ibg img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*HEADER-BLOCK -блок, который будет использоваться неск раз*/
+
+.header-block {
+    text-align: center;
+}
+.header-block__title {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    line-height: calc(57/40*100%);
+    color: #252B42;
+}
+.header-block__title:not(:last-child){
+    margin: 0 0 10px 0;
+}
+
+.header-block__subtitle {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    line-height: calc(20/14*100%);
+    color: #737373;
+    
+}
+
+
+/*----------------Шапка----------------*/
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+}
+.header__container {
+    display: flex;
+    min-height: 104px;
+    align-items: center;
+}
+
+
+.header__logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #252B42;
+}
+.header__menu {
+    margin: 0 0 0 133px;
+	 
+}
+
+/*Медиавыражения позволяют адаптировать страницу для различных типов устройств (в данном случае меняет отступ между лого и меню в зависимости от ширины экрана)*/
+
+
+.menu{ 
+    padding: 5px 0;       /* Отступы безопасности*/
+}
+
+.menu__list {
+    display: flex; 
+    flex-wrap: wrap;
+}
+.menu__item:not(:last-child) {  /*Чтобы не было висячего отступа у последнего пункта меню*/
+     margin: 0 21px 0 0 ;
+}
+.menu__link {
+font-size: 14px;
+font-weight: 600;
+line-height: 171%;
+color: #737373;
+}
+
+
+
+
+/*----------------Page----------------*/
+
+.page{
+    flex: 1 1 auto;  
+}
+
+.page__main-block {
+    position: relative;
+}
+
+
+
+.main-block__body {
+    padding: 184px 0 191px 0;
+    position: relative;
+    z-index: 2;   /*Позиционируемые элементы будут отображаться поверх непозиционированных элементов при условии, что з-индекс не задан никому. У .main-block__image задана position, поэтому этому блоку тоже задаем позицию и z-index больше 0*/
+    max-width: 409px;  
+}
+
+/*Применен нижний отступ ко всем элементам мэйн-боди первого порядка (кроме последнего элемента)*/
+.main-block__body > *:not(:last-child){
+    margin-bottom: 35px;
+}
+
+.main-block__title {
+font-size: 58px;
+font-weight: 800;
+line-height: calc(80/58*100%);
+text-align: left;
+    letter-spacing: 0.2px;
+    color: #252B42;
+}
+.main-block__text{
+font-size: 20px;
+font-weight: 500;
+line-height: 150%;
+text-align: left;
+    letter-spacing: 0.2px;
+    color: #737373;
+}
+.main-block__buttons {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 10px 0;   
+}
+.main-block__button {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 200%;
+    letter-spacing: 0.2px;
+   
+    border-radius: 37px;
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 36px; /*Паддинги справа и слева+паддинги безопасности по 5пх сверху и снизу*/
+    min-height: 48px;
+    margin: 10px 0;
+}
+
+
+.main-block__button_orange{
+    color: #FFFFFF;
+    background-color: #FF7B47;
+}
+.main-block__button_border{
+      color: #0D5C63;
+    border: 1px solid #0D5C63;
+}
+.main-block__image  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/*-------------------------------------------*/
+.page__services {
+    margin: -110px 0 0 0;
+    position: relative;
+    z-index: 3;
+}
+
+.services__body {
+    display: flex;
+    flex-wrap: wrap;
+   margin: 0 -15px -30px;
+}
+
+.services__column {
+    padding: 0 15px;
+    margin-bottom: 30px;
+}
+ 
+.item-service {
+    height: 100%;
+    box-shadow: 0px 13px 19px 0px rgba(0, 0, 0, 0.07);
+    background-color: #FFF;
+    padding: 40px 35px;
+}
+.item-service_green{
+    background: #0D5C63;
+} 
+.item-service > *:not(:last-child){
+    margin-bottom: 10px;
+}
+
+
+.item-service__title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 133%;
+    color:#252B42;
+}
+
+.item-service_green .item-service__title{
+    color: #fff;
+}
+.item-service__text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 142%;
+    color:#737373;
+} 
+.item-service_green .item-service__text{
+    color: #fff;
+}
+
+/*---------------Advantages-------*/
+.advantages {
+    padding: 80px 0;
+    
+}
+
+.advantages__header{
+    margin: 0 0 50px 0;
+}
+
+.advantages__body {
+    margin: 0 -15px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: -30px;
+}
+.advantages__column {
+    padding: 0 15px;
+    flex: 0 1 25%;
+    margin-bottom: 30px;
+    
+}
+.advantages__item {
+    padding: 30px 35px;
+    text-align: center;
+    background-color: #fff;
+    height: 100%;
+}
+.advantages__item > *:not(:last-child){
+    margin-bottom: 10px;
+}
+/*Это сделано потому что иконки разной высоты, таким образом их выровняли*/
+.advantages__icon {
+    height: 48px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.advantages__value {
+font-size: 40px;
+font-weight: 700;
+line-height: calc(57/40*100%);
+letter-spacing: 0.2px;
+    color: #252B42;
+}
+.advantages__text {
+    font-size: 16px;
+font-weight: bold;
+line-height: calc(24/16*100%);
+letter-spacing: 0.1px;
+color: #737373;
+}
+
+
+/*------Practise-----*/
+
+.practice{
+    padding: 125px 0 80px 0;
+}
+
+
+.practice__header {
+    margin: 0 0 45px 0;
+}
+
+.practice__body {
+    margin: 0 -15px -30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.practice__column {
+    padding: 0 15px;
+    flex: 0 1 25%;
+    margin-bottom: 30px;
+}
+.practice__item {
+    background-color: #fff;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.item-practice__content {
+    padding: 30px;
+    flex: 1 1 auto;
+}
+
+.item-practice__link:hover {
+    text-decoration: underline;
+}
+
+.item-practise__title {
+     font-size: 16px;
+   font-weight: 700;
+   line-height: calc(24/16*100%);
+    letter-spacing: 0.1px;
+   text-align: left;
+    color: #252B42;
+    margin-bottom: 15px;
+}
+.item-practise__text {
+    font-size: 14px;
+   font-weight: 500;
+   line-height: calc(20/14*100%);
+    letter-spacing: 0.2px;
+   text-align: left;
+    color: #737373; 
+}
+
+/*Паддинг тут задан в %, цифра в 60% получена делением ширины блока в макете на высоту картинки. (Если паддинг или марджин в процентах, то это будет процент от ширины родительского элемента.) */
+.item-practice__image {
+    display: block;
+    padding-bottom: 60%
+}
+
+
+/*---------Whoweare-------------*/
+.page__whoweare{
+    padding: 100px 0 136px;
+    background-color: #fff;
+}
+.whoweare__header{
+    margin: 0 0 100px 0;
+}
+.whoweare__body {
+    display: flex;
+    align-items: stretch;
+    
+}
+.whoweare__video {
+    flex: 0 0 57%;
+    position: relative;
+    
+}
+.whoweare__body iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;    
+}
+.whoweare__content {
+    flex: 1 1 auto;
+    padding: 0 0 0 121px ;
+}
+.whoweare__title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: calc(57/40*100%);
+    letter-spacing: 0.2px;
+    color: #252B42;
+    text-align: left;
+    margin: 20px 0 10px 0;
+}
+.whoweare__text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: calc(20/14*100%);
+    letter-spacing: 0.2px;
+    color: #737373;
+    text-align: left;
+}
+
+
+.whoweare__items {
+    margin-top: 50px;
+}
+.whoweare__item {
+    display: flex;
+}
+.item-whoweare__icon {
+    flex: 0 0 32px;
+}
+
+.item-whoweare__body {
+    flex: 1 1 auto;
+    padding-left: 20px;
+}
+
+.item-whoweare:not(:first-child){
+    padding-top: 30px; 
+}
+
+.item-whoweare__title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: calc(24/16*100%);
+    letter-spacing: 0.1px;
+    color: #252B42;
+    text-align: left;
+}
+.item-whoweare__text {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: calc(24/14*100%);
+    letter-spacing: 0.2px;
+    color: #737373;
+    text-align: left;
+    /* Это чтобы сделать многоточие. Чтобы это работало во флекс-контейнере нужно задать обязательно ширину. Text-overflow работает, если для блока значение свойства overflow установлено как auto, scroll или hidden. При нажатии на троеточие полный текст открываться не будет, он тупо так сокращиется, если не помещается в блок*/
+    
+    max-width: 224px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.item-whoweare__text:hover{
+    color: #FF7B47;
+    text-decoration: underline;
+}
+
+
+/*------Clients-------------*/
+
+
+.page__clients {
+	border-bottom: 77px solid #252B42;
+}
+
+.clients-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 175px;
+    margin-bottom: 87px;
+}
+
+.clients-item {
+    flex: 0 1 16.66%;
+    padding: 0 15px;
+    margin-bottom: 15px; 
+    min-width: 140px;
+}
+.page__clients img {
+    max-width: 100%;   
+}
+
+/*---------------Форма ввода--------------*/
+
+
+
+.subscribe__container {
+	padding: 0px 30px;
+}
+
+.subscribe__inner{
+	margin: -144px 0px 0px 0px;
+	position: relative;
+	z-index: 3;
+}
+
+.subscribe__body {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	
+	padding: 30px 50px;
+	margin-bottom: 20px;
+	background-color: #17213C;
+}
+.subscribe__title {
+	flex: 0 1 50%;
+	max-width: 270px;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: calc(32/24*100%);
+	letter-spacing: 0.1px;
+	text-align: left;
+	color: #FFFFFF ;
+}
+.subscribe__form {
+	flex: 0 1 50%;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	
+}
+
+.subscribe__input{
+	flex: 1 1 auto;
+	min-height: 58px;
+	background-color: #E5E5E5;
+	border-radius: 5px 0 0 5px;
+	padding: 0px 20px;
+
+	font-size: 14px;
+	font-weight: 400;
+	line-height: calc(28/14*100%);
+	letter-spacing: 0.2px;
+	color: #737373 ;
+}
+
+.subscribe__input:focus{
+	color: #000;
+	font-weight: 500;
+}
+
+.subscribe__button {
+	border-radius: 0 5px 5px 0;
+	background-color: #FF7B47;
+	border: 1px solid #E5E5E5;
+
+	font-size: 14px;
+	font-weight: 400;
+	line-height: calc(28/14*100%);
+	letter-spacing: 0.2px;
+	color: #FFFFFF ;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	
+	min-height: 58px;
+	padding: 0px 22px;
+
+}
+
+/*----------Cetintouch-----------------------------*/
+.getintouch{
+	padding-bottom: 148px;
+} 
+.getintouch__container{
+padding: 0 30px;
+}
+.getintouch__header{
+	margin: 80px 0px;
+}
+
+.getintouch__items{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+} 
+
+.getintouch_item {
+	flex: 0 1 33.33%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	text-align: center;
+	background-color: #fff;
+	padding: 50px 20px;
+}
+.getintouch_item >*:not(last-child){
+	margin-bottom: 15px;
+}
+
+.getintouch_item_black{
+	background-color: #252B42;
+	padding: 80px 20px;
+}
+
+.geintouch__icon {
+	width: 73px;
+	height: 72px;
+}
+
+.getintouch__post a{
+	font-size: 14px;
+	font-weight: 600;
+	line-height: calc(24/14*100%);
+	letter-spacing: 0.2px;
+	text-align: center;
+	color: #252B42 ;
+	
+	display: block;
+}
+
+.getintouch__post a:hover{
+	text-decoration: underline;
+}
+
+.getintouch_item_black .getintouch__post a{
+	color: #fff;
+}
+
+.getintouch__support {
+	font-size: 16px;
+	font-weight: 700;
+	line-height: calc(24/16*100%);
+	letter-spacing: 0.1px;
+	text-align: center;
+	color:#252B42;
+}
+
+.getintouch_item_black .getintouch__support{
+	color: #fff;;
+}
+
+.getintouch__button {
+	display: block;
+	max-width: 160px;
+	border: 1px solid #FF7B47;
+	border-radius: 5px;
+	padding: 10px 20px;
+	
+	font-size: 14px;
+	font-weight: 600;
+	line-height: calc(24/14*100%);
+	letter-spacing: 0.2px;
+	text-align: center;
+	color: #FF7B47;
+}
+
+.getintouch_item_black .getintouch__button{
+	border: 1px solid #fff;
+	color: #fff;
+}
+
+.getintouch__button:hover{
+   background-color: #FF7B47;
+	color: #fff;
+}
+
+.getintouch_item_black .getintouch__button:hover{
+	background-color: #fff;
+	color:#252B42;
+}
+
+/*-----------Contus-------*/
+.page_contus {
+	padding: 40px 0;
+	background-color: #fff;
+}
+.contus-inner{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.contus-text >*:not(:last-child){
+	margin-bottom: 10px;
+} 
+.contus-title {
+   font-size: 24px;
+	font-weight: 700;
+	line-height: calc(32/24*100%);
+	letter-spacing: 0.1px;
+	text-align: left;
+	color: #252B42 ;
+}
+.contus-subtitle {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: calc(20/14*100%);
+	letter-spacing: 0.2px;
+	text-align: left;
+	color: #737373;
+
+}
+.contus-button {
+	display: block;
+	min-width: 163px;
+	max-height: 58px;
+	padding: 15px 15px;;
+	margin-left: 36px;
+	background-color: #FF7B47;
+	border-radius: 5px;
+	border: 1px solid #FF7B47;
+
+	font-size: 14px;
+	font-weight: 700;
+	line-height: calc(28/14*100%);
+	letter-spacing: 0.2px;
+	text-align: center;
+	color:  #fff;
+}
+
+.contus-button:hover {
+	background-color: #fff;
+	border: 1px solid #FF7B47;
+	color:  #FF7B47;
+}
+
+
+
+/*----------------Футер----------------*/
+.footer__top {
+	background-color: #17213C;
+	padding: 50px 0;
+	
+}
+.footer__inner{
+	display: flex;
+	justify-content: flex-start;
+}
+.footer__column {
+	flex:0 1 16.66%;
+}
+.footer__column_wicons {
+	flex: 1 1 33.33%;
+}
+
+
+.footer__subtitle {
+	font-size: 16px;
+	font-weight: 700;
+	line-height: calc(24/16*100%);
+	letter-spacing: 0.1px;
+	text-align: left;
+	color: #FFFFFF ;
+
+	margin-bottom: 20px;
+}
+
+.menu-footer__list-item:not(:last-child){
+	margin-bottom: 10px;
+}
+.menu-footer__link {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: calc(24/14*100%);
+	letter-spacing: 0.2px;
+	text-align: left;
+	color: #FFFFFF ;
+}
+.menu-footer__link:hover{
+	text-decoration: underline;
+}
+
+.menu-footer__icon {
+	max-width: 24px;
+	max-height: 31px;	
+}
+
+.footer__column_wicons li {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.footer__column_wicons p{
+	font-size: 14px;
+	font-weight: 600;
+	line-height: calc(24/14*100%);
+	letter-spacing: 0.2px;
+	text-align: left;
+	color: #FFFFFF ;
+
+	margin-left: 10px;
+
+}
+
+
+
+.footer__bottom {
+	background-color: #fff;
+	padding: 25px 0;
+}
+
+.footer__inner{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.footer__textend {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: calc(24/14*100%);
+	letter-spacing: 0.2px;
+	text-align: center;
+	color: #737373;
+}
+
+.footer__socicons {
+	display: flex;
+}
+
+.socicons__inner {
+	margin-right: 20px;
+}
+
+.socicons__link
+
+.socicons__img{
+	width: 24px;
+	max-height: 24px;;
+}
+
+
+
